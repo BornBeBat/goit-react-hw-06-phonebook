@@ -1,14 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getLocalContacts, setLocalContacts } from 'utils';
+import { contacts_BASE } from './contacts';
 
 export const contactsSlise = createSlice({
   name: 'contacts',
-  initialState: getLocalContacts(),
+  initialState: contacts_BASE,
   reducers: {
     addContact: (state, action) => {
-      const result = [...state, action.payload];
-      setLocalContacts(result);
-      return result;
+      return [...state, action.payload];
     },
     deleteContact: (state, action) => {
       return state.filter(el => el.id !== action.payload);
